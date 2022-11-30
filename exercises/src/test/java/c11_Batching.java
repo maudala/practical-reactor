@@ -50,7 +50,6 @@ public class c11_Batching extends BatchingBase {
      */
     @Test
     public void command_gateway() {
-        //todo: implement your changes here
         Flux<Void> processCommands = inputCommandStream()
                 .groupBy(Command::getAggregateId)
                 .flatMap(commandGroups -> commandGroups.concatMap(this::sendCommand));
